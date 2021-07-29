@@ -1,0 +1,7 @@
+.fa-link{
+  /* 文字漸層色 */
+  background: -webkit-linear-gradient(top,#e6f0ff 0,#0d6efd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 140px;
+}

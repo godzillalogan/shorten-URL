@@ -11,7 +11,7 @@ const routes = require('./routes')  // 引用路由器
 // require('./config/mongoose')
 
 app.use(routes)  // 將 request 導入路由器
-
+app.use(express.static('public'))  //靜態檔案
 // setting template engine, extname: '.hbs'，是指定副檔名為.hbs，有了這行以後，我們才能把預設的長檔名改寫成短檔名
 app.engine('hbs', exphbs({
   defaultLayout: 'main',
