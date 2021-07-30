@@ -5,17 +5,22 @@
   <div class="mt-5 fs-1  text-center">
     <i class="fas fa-link"></i>
   </div>
-  <div class="form-group mt-4">
-    <form action="/" action="POST" id="form" novalidate>
+  <div class="mt-4">
+    <form action="/shortUrls" method="POST" id="form" novalidate>
       <div class="mb-3 form-group w-50 mx-auto">
         {{!-- <label for="URL" class="form-label">請</label> --}}
-        <input type="url" class="form-control" name="URL" id="url" placeholder="URL" required>
+        <input type="url" class="form-control" name="fullURL" id="url" placeholder="URL" required>
         <div class="valid-feedback">OK!</div>
         <div class="invalid-feedback">This field is required.</div>
       </div>
       <div class="d-flex">
-        <button type="submit" class="btn btn-outline-primary  mx-auto" id="submit-button">Shorten</button>
+        <button type="submit" class="btn btn-outline-primary mx-auto" id="submit-button">Shorten</button>
       </div>
     </form>
+    <div>
+      {{#if shortUrls}}
+        <h1>{{shortUrls}}</h1>
+      {{/if}}
+    </div>
   </div>
 </div>
