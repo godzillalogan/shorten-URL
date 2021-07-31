@@ -16,10 +16,7 @@ router.get('/', async (req , res) =>{
 router.get('/:shortUrl', async (req, res) => {
   try {
     const shortUrl = await ShortUrl.findOne({ short: req.params.shortUrl })
-    // console.log(shortUrl)
     if (shortUrl === null) return res.sendStatus(404)
-    // shortUrl.clicks++
-    // shortUrl.save()
     res.redirect(shortUrl.full)
   }catch{
     console.error(error)

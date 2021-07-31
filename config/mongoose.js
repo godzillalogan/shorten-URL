@@ -1,5 +1,4 @@
 const mongoose = require('mongoose') // 載入 mongoose
-
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/shorten-URL'
 
 // 設定連線到 mongoDB
