@@ -25,10 +25,24 @@ router.get('/:shortUrl', async (req, res) => {
 })
 
 router.post('/shortUrls',async(req , res) => {
-  // const short = 'localhost:3000/' + generateShort()
   try{
-    await ShortUrl.create({ full: req.body.fullURL, short: generateShort()})
-    res.redirect('/')
+    const inputUrl = req.body.fullURL
+    let short = generateShort()
+
+    ShortUrl.find()
+      .lean()
+      .then(shortUrls =>{
+        //檢查輸入的網址是否重複
+        if (shortUrls.find(shortUrl => inputUrl === shortUrl.full)){
+          return res.redirect('/')
+        }
+        //檢查短網址是否重複
+        while (shortUrls.some(shortUrl => shortUrl.short === short)){
+          short = generateShort()
+        }
+        ShortUrl.create({ full: inputUrl, short: short })
+        res.redirect('/')
+      })
   }catch(error){
     console.error(error);
   }
