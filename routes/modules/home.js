@@ -3,11 +3,12 @@ const express = require('express')
 const router = express.Router()
 const ShortUrl = require('../../models/shortUrl')
 const generateShort = require('../../tools/generateShort')
+const heroku = "https://tranquil-caverns-90558.herokuapp.com/"
 
 router.get('/', async (req , res) =>{
   try{
     const shortUrls = await ShortUrl.find().lean()
-    res.render('index', { shortUrls: shortUrls })
+    res.render('index', { shortUrls, heroku})
   }catch{
     console.error(error)
   }
